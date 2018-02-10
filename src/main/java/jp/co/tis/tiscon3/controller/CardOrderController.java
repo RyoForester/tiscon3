@@ -53,10 +53,28 @@ public class CardOrderController {
      * @return お勤め先登録ページresponse
      */
     public HttpResponse inputJob(CardOrderForm form) {
+        if (form.hasErrors()) {
+            return templateEngine.render("cardOrder/user", "form", form);
+        }
         // エラーを出したくないので強制的にエラーを消す.
         form.setErrors(null);
+        if(form.homePhoneNumber==null||form.mobilePhoneNumber==null){
+            return templateEngine.render("cardOrder/user", "form", form);
+        }
+        if (form.job.equals("他無職")||form.job.equals("学生"))
+        { CardOrder cardOrder = beans.createFrom(form, CardOrder.class);
 
-        return templateEngine.render("cardOrder/job", "form", form);
+            cardOrderDao.insert(cardOrder);
+
+            return redirect(getClass(), "completed", SEE_OTHER);
+
+
+        }
+        else
+            {
+            return templateEngine.render("cardOrder/job", "form", form);
+        }
+
     }
 
     /**

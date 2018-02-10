@@ -44,70 +44,71 @@ public class CardOrderForm extends FormBase {
     @NotBlank
     @Size(max = 13)
     @Pattern(regexp = "^0[0-9]{1,3}-[0-9]{2,4}-[0-9]{4}$")
-    private String homePhoneNumber;
+    public String homePhoneNumber;
 
+    @NotBlank
     @Size(max = 13)
     @Pattern(regexp = "^((070|080|090)-[0-9]{4}-[0-9]{4})?$")
-    private String mobilePhoneNumber;
+    public String mobilePhoneNumber;
 
     @NotBlank
     @Size(max = 255)
     @Email
     private String emailAddress;
 
-    @NotBlank
+
     @Size(max = 20)
     private String spouse;
 
-    @NotBlank
+
     @Size(max = 20)
     private String houseClassification;
 
-    @NotBlank
+
     @Size(max = 6)
     @Pattern(regexp = "[0-9]*")
     private String debt;
 
     @NotBlank
     @Size(max = 120)
-    private String job;
+    public String job;
 
     @NotBlank
     @Size(max = 6)
     @Pattern(regexp = "[0-9]*")
     private String income;
-
+    @NotBlank
     @Size(max = 255)
     private String employerName;
-
+    @NotBlank
     @Size(max = 8)
     @Pattern(regexp = "^([0-9]{3}-[0-9]{4})?$")
     private String employerZipCode;
-
+    @NotBlank
     @Size(max = 255)
     private String employerAddress;
-
+    @NotBlank
     @Size(max = 13)
     @Pattern(regexp = "^(0[0-9]{1,3}-[0-9]{2,4}-[0-9]{4})?$")
     private String employerPhoneNumber;
-
+    @NotBlank
     @Size(max = 255)
     private String industryType;
-
+    @NotBlank
     @Size(max = 6)
     @Pattern(regexp = "[0-9]*")
     private String capital;
-
+    @NotBlank
     @Size(max = 255)
     @Pattern(regexp = "[0-9]*")
     private String companySize;
-
+    @NotBlank
     @Size(max = 255)
     private String position;
-
+    @NotBlank
     @Size(max = 255)
     private String department;
-
+    @NotBlank
     @Size(max = 6)
     @Pattern(regexp = "[0-9]*")
     private String employeeLength;
