@@ -60,12 +60,20 @@
                                 <input type="text" name="address" th:value="${form.address}"/>
                             </div>
                             電話番号（自宅電話番号か携帯電話番号のどちらか入力）
-                            <div class="field" th:classappend="${form.hasErrors('homePhoneNumber')} ? 'error'">
+                            <div class="field" th:classappend="${phone_error} ? 'error'">
                                 <label>自宅電話番号 例: 012-345-6789</label>
+
+                                <ul class="ui red basic label" th:if="${phone_error}">
+                                    <li>どちらか入力してください</li>
+                                </ul>
                                 <input type="text" name="homePhoneNumber" th:value="${form.homePhoneNumber}"/>
                             </div>
-                            <div class="field" th:classappend="${form.hasErrors('mobilePhoneNumber')} ? 'error'">
+                            <div class="field" th:classappend="${phone_error} ? 'error'">
                                 <label>携帯電話番号 例: 012-3456-7890</label>
+                                <ul class="ui red basic label" th:if="${phone_error}">
+                                    <li>どちらか入力してください</li>
+                                </ul>
+
                                 <input type="text" name="mobilePhoneNumber" th:value="${form.mobilePhoneNumber}"/>
                             </div>
                             <div class="field" th:classappend="${form.hasErrors('emailAddress')} ? 'error'">

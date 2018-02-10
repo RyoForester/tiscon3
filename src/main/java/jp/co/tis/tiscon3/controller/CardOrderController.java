@@ -53,13 +53,20 @@ public class CardOrderController {
      * @return お勤め先登録ページresponse
      */
     public HttpResponse inputJob(CardOrderForm form) {
+        
         if (form.hasErrors()) {
+            if(form.homePhoneNumber.equals("")&&form.mobilePhoneNumber.equals("")){
+                String phone_error = "error";
+                return templateEngine.render("cardOrder/user", "form", form,"phone_error",phone_error);
+            }
             return templateEngine.render("cardOrder/user", "form", form);
         }
         // エラーを出したくないので強制的にエラーを消す.
         form.setErrors(null);
-        if(form.homePhoneNumber==null||form.mobilePhoneNumber==null){
-            return templateEngine.render("cardOrder/user", "form", form);
+        System.out.println(form.homePhoneNumber);
+        if(form.homePhoneNumber.equals("")&&form.mobilePhoneNumber.equals("")){
+            String phone_error = "error";
+            return templateEngine.render("cardOrder/user", "form", form,"phone_error",phone_error);
         }
         if (form.job.equals("他無職")||form.job.equals("学生"))
         { CardOrder cardOrder = beans.createFrom(form, CardOrder.class);
@@ -98,6 +105,10 @@ public class CardOrderController {
     public HttpResponse create(CardOrderForm form) {
         if (form.hasErrors()) {
             return templateEngine.render("cardOrder/user", "form", form);
+        }
+        if(form.homePhoneNumber.equals("")){
+            String xx_error = "error";
+            return templateEngine.render("cardOrder/user", "form", form ,"xx_error",xx_error);
         }
         CardOrder cardOrder = beans.createFrom(form, CardOrder.class);
 
