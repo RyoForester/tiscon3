@@ -34,7 +34,7 @@ public class CardOrderForm extends FormBase {
 
     @NotBlank
     @Size(max = 8)
-    @Pattern(regexp = "^[0-9]{3}-[0-9]{4}$")
+    @Pattern(regexp = "^[0-9]{7}$")
     private String zipCode;
 
     @NotBlank
