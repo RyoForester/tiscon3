@@ -6,6 +6,7 @@ import enkan.data.HttpResponse;
 import jp.co.tis.tiscon3.dao.CardOrderDao;
 import jp.co.tis.tiscon3.entity.CardOrder;
 import jp.co.tis.tiscon3.form.CardOrderForm;
+import jp.co.tis.tiscon3.form.CardOrderForm2;
 import kotowari.component.TemplateEngine;
 
 import javax.annotation.PostConstruct;
@@ -44,7 +45,7 @@ public class CardOrderController {
      * @return 本人登録ページresponse
      */
     public HttpResponse inputUser() {
-        return templateEngine.render("cardOrder/user", "form", new CardOrderForm());
+        return templateEngine.render("cardOrder/user", "form", new CardOrderForm(),"form2", new CardOrderForm2());
     }
 
     /**
@@ -53,25 +54,26 @@ public class CardOrderController {
      * @return お勤め先登録ページresponse
      */
     public HttpResponse inputJob(CardOrderForm form) {
-        //もし、userのほうで必須項目が埋まっていたらerror出さずに  form.setErrors(null);をしてjobのほうに進む
-        //jobのほうのerrorは必須項目のみ@Not Blankして各項目error（必ず入力してください）をだす
 
 
 
-        if (form.hasErrors()) {
-            if(form.homePhoneNumber.equals("")&&form.mobilePhoneNumber.equals("")){
-                String phone_error = "error";
-                return templateEngine.render("cardOrder/user", "form", form,"phone_error",phone_error);
+
+            if (form.hasErrors()) {
+                if (form.homePhoneNumber.equals("") && form.mobilePhoneNumber.equals("")) {
+                    String phone_error = "error";
+                    return templateEngine.render("cardOrder/user", "form", form, "phone_error", phone_error);
+                }
+                return templateEngine.render("cardOrder/user", "form", form);
             }
-            return templateEngine.render("cardOrder/user", "form", form);
-        }
-        // エラーを出したくないので強制的にエラーを消す.
-        form.setErrors(null);
-        System.out.println(form.homePhoneNumber);
-        if(form.homePhoneNumber.equals("")&&form.mobilePhoneNumber.equals("")){
-            String phone_error = "error";
-            return templateEngine.render("cardOrder/user", "form", form,"phone_error",phone_error);
-        }
+            // エラーを出したくないので強制的にエラーを消す.
+            form.setErrors(null);
+
+            if (form.homePhoneNumber.equals("") && form.mobilePhoneNumber.equals("")) {
+                String phone_error = "error";
+                return templateEngine.render("cardOrder/user", "form", form, "phone_error", phone_error);
+            }
+
+
         if (form.job.equals("他無職")||form.job.equals("学生")||form.job.equals("パートアルバイト")||form.job.equals("主婦")||form.job.equals("年金受給"))
         { CardOrder cardOrder = beans.createFrom(form, CardOrder.class);
 
@@ -83,7 +85,8 @@ public class CardOrderController {
         }
         else
             {
-            return templateEngine.render("cardOrder/job", "form", form);
+            //return templateEngine.render("cardOrder/job", "form", form);
+                return templateEngine.render("cardOrder/job", "form2", new CardOrderForm2());
         }
 
     }
@@ -106,15 +109,12 @@ public class CardOrderController {
      * @return 完了ページへのリダイレクトresponse
      */
     @Transactional
-    public HttpResponse create(CardOrderForm form) {
-        if (form.hasErrors()) {
-            return templateEngine.render("cardOrder/user", "form", form);
+    public HttpResponse create(CardOrderForm2 form2) {
+        if (form2.hasErrors()) {
+            return templateEngine.render("cardOrder/job", "form2" , form2);
         }
-        if(form.homePhoneNumber.equals("")){
-            String xx_error = "error";
-            return templateEngine.render("cardOrder/user", "form", form ,"xx_error",xx_error);
-        }
-        CardOrder cardOrder = beans.createFrom(form, CardOrder.class);
+
+        CardOrder cardOrder = beans.createFrom(form2, CardOrder.class);
 
         cardOrderDao.insert(cardOrder);
 

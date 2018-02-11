@@ -11,17 +11,17 @@
 <body>
 <div class="full height image" layout:fragment="content">
     <div class="ui main container">
-        <div class="ui information container">
+        <div class="ui inform2ation container">
             <div class="ui middle center aligned grid">
                 <div class="center column">
                     <div class="ui segment metrixir">
                         <h1 class="ui aligned header teal">お申込み情報</h1>
 
-                        <form class="ui form" method="post" action="/cardOrder/">
+                        <form2 class="ui form2" method="post" action="/cardOrder/">
 
                             <!-- /*エラーがあれば表示する*/ -->
-                            <ul class="ui red basic label" th:if="${form.hasErrors()}">
-                                <li th:each="error : ${form.getErrors().entrySet()}" th:text="${error.value}"></li>
+                            <ul class="ui red basic label" th:if="${form2.hasErrors()}">
+                                <li th:each="error : ${form2.getErrors().entrySet()}" th:text="${error.value}"></li>
                             </ul>
 
                             <div class="ui horizontal divider">お勤め先について</div>
@@ -29,95 +29,96 @@
 
                             <div class="ui statement">ご職業が「経営・自営業」、「会社員」、「契約・派遣社員」、「公務員」、「民間団体」、「その他（有職）」の方は、以下の項目をご入力ください。</div>
 
-                            <div class="field" th:classappend="${form.hasErrors('employerName')} ? 'error'">
+                            <div class="field" th:classappend="${form2.hasErrors('employerName')} ? 'error'">
                                 <label><font color="RED">*</font>お勤め先名</label>
-                                <input type="text" name="employerName" th:value="${form.employerName}"/>
+                                <input type="text" name="employerName" th:value="${form2.employerName}"/>
                             </div>
-                            <div class="field" th:classappend="${form.hasErrors('employerZipCode')} ? 'error'">
+                            <div class="field" th:classappend="${form2.hasErrors('employerZipCode')} ? 'error'">
                                 <label>お勤め先郵便番号</label>
-                                <input type="text" name="employerZipCode" th:value="${form.employerZipCode}"/>
+                                <input type="text" name="employerZipCode" th:value="${form2.employerZipCode}"/>
                             </div>
-                            <div class="field" th:classappend="${form.hasErrors('employerAddress')} ? 'error'">
+                            <div class="field" th:classappend="${form2.hasErrors('employerAddress')} ? 'error'">
                                 <label>お勤め先住所</label>
-                                <input type="text" name="employerAddress" th:value="${form.employerAddress}"/>
+                                <input type="text" name="employerAddress" th:value="${form2.employerAddress}"/>
                             </div>
-                            <div class="field" th:classappend="${form.hasErrors('employerPhoneNumber')} ? 'error'">
+                            <div class="field" th:classappend="${form2.hasErrors('employerPhoneNumber')} ? 'error'">
                                 <label><font color="RED">*</font>お勤め先電話番号</label>
-                                <input type="text" name="employerPhoneNumber" th:value="${form.employerPhoneNumber}"/>
+                                <input type="text" name="employerPhoneNumber" th:value="${form2.employerPhoneNumber}"/>
                             </div>
-                            <div class="field" th:classappend="${form.hasErrors('industryType')} ? 'error'">
+                            <div class="field" th:classappend="${form2.hasErrors('industryType')} ? 'error'">
                                 <label><font color="RED">*</font>業種</label>
                                 <ul style="list-style:none">
                                     <li>
-                                    <input type="radio" name="industryType" value="農林水鉱" th:checked="${form.industryType}=='農林水鉱'"/>農業・林業・水産業・鉱業
+                                    <input type="radio" name="industryType" value="農林水鉱" th:checked="${form2.industryType}=='農林水鉱'"/>農業・林業・水産業・鉱業
                                     </li>
-                                    <li><input type="radio" name="industryType" value="建築不動産" th:checked="${form.industryType}=='建築不動産'"/>建設・不動産業
+                                    <li><input type="radio" name="industryType" value="建築不動産" th:checked="${form2.industryType}=='建築不動産'"/>建設・不動産業
                                     </li>
-                                    <li><input type="radio" name="industryType" value="製造" th:checked="${form.industryType}=='製造'"/>製造業
+                                    <li><input type="radio" name="industryType" value="製造" th:checked="${form2.industryType}=='製造'"/>製造業
                                     </li>
-                                    <li><input type="radio" name="industryType" value="卸小売流通" th:checked="${form.industryType}=='卸小売流通'"/>卸売業・小売・その他流通業
+                                    <li><input type="radio" name="industryType" value="卸小売流通" th:checked="${form2.industryType}=='卸小売流通'"/>卸売業・小売・その他流通業
                                     </li>
-                                    <li><input type="radio" name="industryType" value="金融保険" th:checked="${form.industryType}=='金融保険'"/>金融・保険業
+                                    <li><input type="radio" name="industryType" value="金融保険" th:checked="${form2.industryType}=='金融保険'"/>金融・保険業
                                     </li>
-                                    <li><input type="radio" name="industryType" value="運輸通信" th:checked="${form.industryType}=='運輸通信'"/>運輸・通信業
+                                    <li><input type="radio" name="industryType" value="運輸通信" th:checked="${form2.industryType}=='運輸通信'"/>運輸・通信業
                                     </li>
-                                    <li><input type="radio" name="industryType" value="電気ガス" th:checked="${form.industryType}=='電気ガス'"/>電気・ガス業
+                                    <li><input type="radio" name="industryType" value="電気ガス" th:checked="${form2.industryType}=='電気ガス'"/>電気・ガス業
                                     </li>
-                                    <li><input type="radio" name="industryType" value="官公庁" th:checked="${form.industryType}=='官公庁'"/>官公庁
+                                    <li><input type="radio" name="industryType" value="官公庁" th:checked="${form2.industryType}=='官公庁'"/>官公庁
                                     </li>
-                                    <li><input type="radio" name="industryType" value="サービス" th:checked="${form.industryType}=='サービス'"/>その他サービス業
+                                    <li><input type="radio" name="industryType" value="サービス" th:checked="${form2.industryType}=='サービス'"/>その他サービス業
                                     </li>
-                                    <li><input type="radio" name="industryType" value="その他" th:checked="${form.industryType}=='その他'"/>その他・不明
+                                    <li><input type="radio" name="industryType" value="その他" th:checked="${form2.industryType}=='その他'"/>その他・不明
                                     </li>
                                 </ul>
 
                             </div>
-                            <div class="field" th:classappend="${form.hasErrors('capital')} ? 'error'">
+                            <div class="field" th:classappend="${form2.hasErrors('capital')} ? 'error'">
                                 <label><font color="RED">*</font>資本金</label>
                                 <ul style="list-style:none">
-                                    <li><input type="radio" name="capital" th:field="*{form.capital}" value="999" th:checked="${form.capital}=='999'"/>１千万円未満
+                                    <li><input type="radio" name="capital" th:field="*{form2.capital}" value="999" th:checked="${form2.capital}=='999'"/>１千万円未満
                                     </li>
-                                    <li><input type="radio" name="capital" th:field="${form.capital}" value="4999" th:checked="${form.capital}=='4999'"/>１千万円以上５千万円未満
+                                    <li><input type="radio" name="capital" th:field="${form2.capital}" value="4999" th:checked="${form2.capital}=='4999'"/>１千万円以上５千万円未満
                                     </li>
-                                    <li><input type="radio" name="capital" th:field="${form.capital}" value="29999" th:checked="${form.capital}=='29999'"/>５千万円以上３億円未満
+                                    <li><input type="radio" name="capital" th:field="${form2.capital}" value="29999" th:checked="${form2.capital}=='29999'"/>５千万円以上３億円未満
                                     </li>
-                                    <li><input type="radio" name="capital" th:field="${form.capital}" value="30000" th:checked="${form.capital}=='30000'"/>３億円以上
+                                    <li><input type="radio" name="capital" th:field="${form2.capital}" value="30000" th:checked="${form2.capital}=='30000'"/>３億円以上
                                     </li>
-                                    <li><input type="radio" name="capital" th:field="${form.capital}" value="0" th:checked="${form.capital}=='0'"/>その他
+                                    <li><input type="radio" name="capital" th:field="${form2.capital}" value="0" th:checked="${form2.capital}=='0'"/>その他
                                     </li>
                                     </ul>
                             </div>
-                            <div class="field" th:classappend="${form.hasErrors('companySize')} ? 'error'">
+                            <div class="field" th:classappend="${form2.hasErrors('companySize')} ? 'error'">
                                 <label>お勤め先の規模（従業員数）</label>
                                 <ul style="list-style:none">
-                                <li><input type="radio" name="companySize" th:field="${form.companySize}" value="9" th:checked="${form.companySize}=='9'"/>１０名未満
+                                <li><input type="radio" name="companySize" th:field="${form2.companySize}" value="9" th:checked="${form2.companySize}=='9'"/>１０名未満
                                 </li>
-                                <li><input type="radio" name="companySize" th:field="${form.companySize}" value="29" th:checked="${form.companySize}=='29'"/>１０名以上３０名未満
+                                <li><input type="radio" name="companySize" th:field="${form2.companySize}" value="29" th:checked="${form2.companySize}=='29'"/>１０名以上３０名未満
                                 </li>
-                                <li><input type="radio" name="companySize" th:field="${form.companySize}" value="49" th:checked="${form.companySize}=='49'"/>３０名以上５０名未満
+                                <li><input type="radio" name="companySize" th:field="${form2.companySize}" value="49" th:checked="${form2.companySize}=='49'"/>３０名以上５０名未満
                                 </li>
-                                <li><input type="radio" name="companySize" th:field="${form.companySize}" value="99" th:checked="${form.companySize}=='99'"/>５０名以上１００名未満
+                                <li><input type="radio" name="companySize" th:field="${form2.companySize}" value="99" th:checked="${form2.companySize}=='99'"/>５０名以上１００名未満
                                 </li>
-                                <li><input type="radio" name="companySize" th:field="${form.companySize}" value="499" th:checked="${form.companySize}=='499'"/>１００名以上５００名未満
+                                <li><input type="radio" name="companySize" th:field="${form2.companySize}" value="499" th:checked="${form2.companySize}=='499'"/>１００名以上５００名未満
                                 </li>
-                                <li><input type="radio" name="companySize" th:field="${form.companySize}" value="500" th:checked="${form.companySize}=='500'"/>５００名以上
+                                <li><input type="radio" name="companySize" th:field="${form2.companySize}" value="500" th:checked="${form2.companySize}=='500'"/>５００名以上
                                 </li>
                                 </ul>
                             </div>
-                            <div class="field" th:classappend="${form.hasErrors('department')} ? 'error'">
+                            <div class="field" th:classappend="${form2.hasErrors('department')} ? 'error'">
                                 <label><font color="RED">*</font>所属部署</label>
-                                <input type="text" name="department" th:value="${form.department}"/>
+                                <input type="text" name="department" th:value="${form2.department}"/>
                             </div>
-                            <div class="field" th:classappend="${form.hasErrors('position')} ? 'error'">
+                            <div class="field" th:classappend="${form2.hasErrors('position')} ? 'error'">
                                 <label><font color="RED">*</font>役職</label>
-                                <input type="text" name="position" th:value="${form.position}"/>
+                                <input type="text" name="position" th:value="${form2.position}"/>
                             </div>
-                            <div class="field" th:classappend="${form.hasErrors('employeeLength')} ? 'error'">
+                            <div class="field" th:classappend="${form2.hasErrors('employeeLength')} ? 'error'">
                                 <label><font color="RED">*</font>勤続年数</label>
-                                <input type="text" class="number" name="employeeLength" th:value="${form.employeeLength}"/><span class="unit">年</span >
+                                <input type="text" class="number" name="employeeLength" th:value="${form2.employeeLength}"/><span class="unit">年</span >
                             </div>
 
                             <!--/*"ご本人"の入力値を引き回すための隠し項目*/-->
+
                             <input type="hidden" name="kanjiName" th:value="${form.kanjiName}"/>
                             <input type="hidden" name="kanaName" th:value="${form.kanaName}"/>
                             <input type="hidden" name="alphabetName" th:value="${form.alphabetName}"/>
@@ -143,7 +144,7 @@
                                     <button class="ui teal button angle right icon">カードを申し込む</button>
                                 </div>
                             </div>
-                        </form>
+                        </form2>
                     </div>
                 </div>
             </div>
