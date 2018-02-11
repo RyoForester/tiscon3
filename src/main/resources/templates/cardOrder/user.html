@@ -156,19 +156,29 @@
                             </div>
 
                             <!--/*"お勤め先"の入力値を引き回すための隠し項目*/-->
-
-                                <input type="hidden" name="employerName" th:value="${form2.employerName}"/>
-                                <input type="hidden" name="employerZipCode" th:value="${form2.employerZipCode}"/>
-                                <input type="hidden" name="employerAddress" th:value="${form2.employerAddress}"/>
-                                <input type="hidden" name="employerPhoneNumber" th:value="${form2.employerPhoneNumber}"/>
-                                <input type="hidden" name="industryType" th:value="${form2.industryType}"/>
-                                <input type="hidden" name="capital" th:value="${form2.capital}"/>
-                                <input type="hidden" name="companySize" th:value="${form2.companySize}"/>
-                                <input type="hidden" name="department" th:value="${form2.department}"/>
-                                <input type="hidden" name="position" th:value="${form2.position}"/>
-                                <input type="hidden" name="employeeLength" th:value="${form2.employeeLength}"/>
-
-
+                            <ul style="list-style:none">
+                                <
+                                <li><input type="hidden" name="employerName" th:value="${form.employerName}"/>
+                                </li>
+                                <li><input type="hidden" name="employerZipCode" th:value="${form.employerZipCode}"/>
+                                </li>
+                                <li><input type="hidden" name="employerAddress" th:value="${form.employerAddress}"/>
+                                </li>
+                                <li><input type="hidden" name="employerPhoneNumber" th:value="${form.employerPhoneNumber}"/>
+                                </li>
+                                <li><input type="hidden" name="industryType" th:value="${form.industryType}"/>
+                                </li>
+                                <li><input type="hidden" name="capital" th:value="${form.capital}"/>
+                                </li>
+                                <li><input type="hidden" name="companySize" th:value="${form.companySize}"/>
+                                </li>
+                                <li><input type="hidden" name="department" th:value="${form.department}"/>
+                                </li>
+                                <li><input type="hidden" name="position" th:value="${form.position}"/>
+                                </li>
+                                <li><input type="hidden" name="employeeLength" th:value="${form.employeeLength}"/>
+                                </li>
+                            </ul>
 
                             <button class="ui fluid teal button">次へ（お勤め先情報の入力）</button>
                         </form>
