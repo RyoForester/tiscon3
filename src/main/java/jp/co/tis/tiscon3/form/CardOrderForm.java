@@ -41,6 +41,10 @@ public class CardOrderForm extends FormBase {
     @Size(max = 255)
     private String address;
 
+    @NotBlank
+    @Size(max = 255)
+    private String address_detail;
+
     @Size(max = 13)
     @Pattern(regexp = "^(0[0-9]{1,3}-[0-9]{2,4}-[0-9]{4})?$")
     public String homePhoneNumber;
