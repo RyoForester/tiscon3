@@ -6,6 +6,7 @@ import enkan.data.HttpResponse;
 import jp.co.tis.tiscon3.dao.CardOrderDao;
 import jp.co.tis.tiscon3.entity.CardOrder;
 import jp.co.tis.tiscon3.form.CardOrderForm;
+import jp.co.tis.tiscon3.form.CardOrderJobForm;
 import kotowari.component.TemplateEngine;
 
 import javax.annotation.PostConstruct;
@@ -56,8 +57,6 @@ public class CardOrderController {
         //もし、userのほうで必須項目が埋まっていたらerror出さずに  form.setErrors(null);をしてjobのほうに進む
         //jobのほうのerrorは必須項目のみ@Not Blankして各項目error（必ず入力してください）をだす
 
-
-
         if (form.hasErrors()) {
             if(form.homePhoneNumber.equals("")&&form.mobilePhoneNumber.equals("")){
                 String phone_error = "error";
@@ -106,13 +105,9 @@ public class CardOrderController {
      * @return 完了ページへのリダイレクトresponse
      */
     @Transactional
-    public HttpResponse create(CardOrderForm form) {
+    public HttpResponse create(CardOrderJobForm form) {
         if (form.hasErrors()) {
-            return templateEngine.render("cardOrder/user", "form", form);
-        }
-        if(form.homePhoneNumber.equals("")){
-            String xx_error = "error";
-            return templateEngine.render("cardOrder/user", "form", form ,"xx_error",xx_error);
+            return templateEngine.render("cardOrder/job", "form", form);
         }
         CardOrder cardOrder = beans.createFrom(form, CardOrder.class);
 
