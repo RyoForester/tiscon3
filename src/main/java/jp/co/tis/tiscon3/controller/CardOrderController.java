@@ -53,7 +53,11 @@ public class CardOrderController {
      * @return お勤め先登録ページresponse
      */
     public HttpResponse inputJob(CardOrderForm form) {
-        
+        //もし、userのほうで必須項目が埋まっていたらerror出さずに  form.setErrors(null);をしてjobのほうに進む
+        //jobのほうのerrorは必須項目のみ@Not Blankして各項目error（必ず入力してください）をだす
+        if()
+
+
         if (form.hasErrors()) {
             if(form.homePhoneNumber.equals("")&&form.mobilePhoneNumber.equals("")){
                 String phone_error = "error";
@@ -68,7 +72,7 @@ public class CardOrderController {
             String phone_error = "error";
             return templateEngine.render("cardOrder/user", "form", form,"phone_error",phone_error);
         }
-        if (form.job.equals("他無職")||form.job.equals("学生"))
+        if (form.job.equals("他無職")||form.job.equals("学生")||form.job.equals("パートアルバイト")||form.job.equals("主婦")||form.job.equals("年金受給"))
         { CardOrder cardOrder = beans.createFrom(form, CardOrder.class);
 
             cardOrderDao.insert(cardOrder);
