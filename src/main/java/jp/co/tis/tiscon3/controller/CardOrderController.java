@@ -55,7 +55,7 @@ public class CardOrderController {
     public HttpResponse inputJob(CardOrderForm form) {
         //もし、userのほうで必須項目が埋まっていたらerror出さずに  form.setErrors(null);をしてjobのほうに進む
         //jobのほうのerrorは必須項目のみ@Not Blankして各項目error（必ず入力してください）をだす
-        if()
+
 
 
         if (form.hasErrors()) {
